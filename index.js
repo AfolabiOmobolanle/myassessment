@@ -6,6 +6,8 @@ let country= document.querySelector("#country")
 let state= document.querySelector("#state")
 let city = document.querySelector("#city")
 let userImage = document.querySelector("#userImage")
+let age = document.querySelector("#age")
+let date = document.querySelector("#gender")
 
 
 const key =`https://randomuser.me/api`;
@@ -17,15 +19,18 @@ function getProfile () {
         return response.json()
     }).then(data =>{
         console.log(data.results[0]);
-        fullname.textContent = data.results[0].name.first + " " + data.results[0].name.last
-        title.textContent =data.results[0].name.title
-        phone.textContent =data.results[0].phone
-        email.textContent =data.results[0].email
-        country.textContent =data.results[0].location.country
-        state.textContent =data.results[0].location.state
-        city.textContent =data.results[0].location.city
+        title.textContent = "Title:" + data.results[0].name.title
+        fullname.textContent = "First Name:" + " " + data.results[0].name.first + " " + data.results[0].name.last
+        age.textContent ="Age:"+ " " + data.results[0].dob.age
+        gender.textContent ="Gender:"+" "+ data.results[0].gender
 
-userImage.src = data.results[0].picture.medium
+
+        phone.textContent ="Phone:"+ " " + data.results[0].phone
+        email.textContent = "Email:"+ " " + data.results[0].email
+        country.textContent = "Country:"+ " " + data.results[0].location.country
+        state.textContent = "State:"+ " " + data.results[0].location.state
+        city.textContent = "City:"+ " " + data.results[0].location.city
+         Img.src = data.results[0].picture.medium
 
        
     })
